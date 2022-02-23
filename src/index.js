@@ -2,7 +2,9 @@
 // You should implement your task here.
 
 module.exports = function towelSort (matrix) {
-let arr = matrix.flat(10)
-    
-return arr.sort((a,b) => a-b)
+  if(!matrix) return []
+  return matrix.reduce((acc, cur, i) => {
+    cur.sort((a, b) => !(i & 1) ? a - b : b - a).map(e => acc.push(e));
+    return acc;
+  }, []);
 }
